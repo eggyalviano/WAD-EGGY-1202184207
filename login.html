@@ -1,0 +1,99 @@
+<?php 
+session_start();
+
+include_once("config.php");
+
+
+if(isset($_POST['login'])) {
+    login($_post);
+}
+
+?>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="widht=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+        <link href="style.css" rel="stylesheet" type="text/css" />
+        <title>Register</title>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg justify-content-between bg-dark navbar-dark">
+        <h1>
+            <strong>
+                <a class="navbar-brand text-light" href="index.php">WAD Login</a>
+            </strong>
+        </h1>
+
+        <ul class="navbar-nav font-weight-bold">
+            <li class="nav-item">
+                <a class="nav-link" href="login.php">Login</a>
+            </li>
+            <li class="nav-item" href="register.php">Register</a>
+            </li>
+         </ul>
+    </nav>
+
+<?php if (isset($_SESSION['massage'])) : ?>
+    <div class='alert aert-danger alert-dismissible fade show fade in' role='alert'>
+        <?= $_SESSION['massege']; ?>
+        <button type='button' class='close' data-dismiss='alret' aria-label='close'>
+            <span aria-hidden='true'>&times;</span>
+        </button>
+    </div>  
+
+<?php
+    unset($_SESSION['massage']);
+    endif
+?>
+
+<?php if (isset($_SESSION['registered'])) : ?>
+    <div class='alert alert-success alert-dismissible fade show fade in' role='alert'>
+        <?= $_SESSION['registered']; ?>
+        <button type='button' class='close' data-dismiss='alert' aria-label='close'>
+            <span aria-hidden='true'>&times;</span>
+        </button>
+    </div>
+    
+<?php
+    unset($_SESSION['registered']);
+endif;
+?>
+
+<div class="container" style="margin-top: 150px">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="container">
+                    <h4 class="card-title text-enter mt- pb-2">Login</4>
+                    <hr>
+                    <div class="card-body pt-0">
+                        <form action="" method="post">
+                            <div class="form-grup">
+                                <label for="email">E-mail</label>
+                                <input required type="email" class="form-control" id="email" name="email" placeholder="E-mail">
+                            </div>
+                            <div class="from-group">
+                                <label for="password">Kata Sandi</label>
+                                <input required type="password" class="form-control" id="password" name="password" placeholder="password">
+                            </div>
+
+                            <div class="text-center pt-2">
+                                <button type="submit" class=" btn btn-primary" name="login">Login</Button>
+                                <p class="mt-3">Belom punya akun? <a href="register.php" class="text-secondary">Registrasi</a></p>
+                            </div>
+                        </from>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
